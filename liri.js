@@ -55,6 +55,11 @@ function myTweets() {
             var tweetResults = data[i].text + "\n";
             console.log(" " + " " + "PREVIOUS TWEET: " + " " + " ")
                 console.log(time + tweetResults);
+            fs.appendFile("log.txt", time + tweetResults, function(err) { 
+                if (err) {
+                    console.log("ERROR")
+                }
+            });
         };
     });
 }
@@ -74,6 +79,11 @@ function spotifySong() {
             console.log("SONG:", songInfo.name);
             console.log("ALBUM:", songInfo.album.name);
             console.log("PREVIEW:", songInfo.preview_url);
+            fs.appendFile("log.txt", songInfo.artists[0].name + songInfo.name + songInfo.album.name + songInfo.preview_url, function(err) { 
+                if (err) {
+                    console.log("ERROR")
+                }
+            });
 
         };
     });
@@ -92,6 +102,11 @@ function movieLookup() {
     console.log("LANGUAGE:", movieObject.Language);
     console.log("PLOT:", movieObject.Plot);
     console.log("ACTORS:", movieObject.Actors);
+    fs.appendFile("log.txt", movieObject.Title + movieObject.Year + movieObject.Country + movieObject.Language + movieObject.Plot + movieObject.Actors, function(err) { 
+        if (err) {
+            console.log("ERROR")
+        }
+    });
   });
 };
 
